@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="bomberman.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Pixeboy';
+            src: url('gfx/PixeloidBold.ttf');
+        }
+
+        body {
+            background-color: black;
+            border: 5px solid white;
+            width: min-content;
+            margin: auto;
+        }
+
+        #plansza {
+            position: relative;
+            width: 770px;
+            height: 770px;
+            /* margin: auto; */
+            /* background-color: lightgreen; */
+            background-image: url('gfx/trawa.png');
+            z-index: -2;
+        }
+
+        h1 {
+            position: absolute;
+            left: 45%;
+            top: 33%;
+            font-size: 50px;
+            font-family: "Trebuchet MS";
+        }
+
+        #boty_kordy {
+            position: absolute;
+            left: 45.5%;
+            top: 70%;
+            font-size: 45px;
+            font-family: "Trebuchet MS";
+        }
+
+        #audio_pick {
+            width: 60px;
+            height: 60px;
+            left: 48%;
+            background-color: red;
+            position: absolute;
+            border-radius: 50%;
+            transition-duration: 0.7s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 3px;
+            top: 860px;
+        }
+
+        #baner_root {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #baner {
+            width: 770px;
+        }
+
+        #stats_root {
+            width: 770px;
+            height: 70px;
+            background-color: blue;
+            left: 335px;
+            background-image: url('gfx/baner.png');
+            display: flex;
+        }
+
+        #score {
+            color: white;
+            font-family: 'Pixeboy';
+            font-size: 25px;
+            width: 260px;
+            margin-top: 19px;
+            padding-right: 60px;
+            text-align: right;
+        }
+
+        #czas {
+            color: white;
+            font-family: 'Pixeboy';
+            font-size: 25px;
+            margin-top: 19px;
+            text-align: center;
+            margin-right: 47px;
+        }
+
+        #zycia {
+            color: white;
+            font-family: 'Pixeboy';
+            font-size: 25px;
+            width: 33px;
+            margin-top: 19px;
+            text-align: center;
+        }
+
+        #highscore {
+            color: white;
+            font-family: 'Pixeboy';
+            font-size: 25px;
+            width: 255px;
+            margin-top: 19px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='baner_root'>
+        <!-- <img id='baner' src='gfx/baner.png'> -->
+        <div id='stats_root'>
+            <h2 id='score'>0</h2>
+            <h2 id='czas'></h2>
+            <h2 id='zycia'>2</h2>
+            <h2 id='highscore'>0</h2>
+        </div>
+        </img>
+    </div>
+    <div id='plansza'>
+
+        <h1></h1>
+        <h2 id='boty_kordy'></h2>
+
+    </div>
+
+    <div id='audio_pick_root' style='text-align: center;'>
+        <div id='audio_pick'>
+            <img id='nutka' src='gfx/nuta_off.png' width='30px'>
+        </div>
+        <script>
+            //ryje banie
+            let stan = false
+            document.getElementById('audio_pick').addEventListener('click', function () {
+
+                if (stan) {
+                    // alert('muzyczka stop')
+                    stan = false
+                    document.getElementById('muzyka').pause()
+                    this.style.backgroundColor = 'red'
+                    document.getElementById('nutka').src = 'gfx/nuta_off.png'
+
+                }
+                else {
+                    // alert('muzyczka start')
+                    stan = true
+                    document.getElementById('muzyka').play()
+                    this.style.backgroundColor = 'green'
+                    document.getElementById('nutka').src = 'gfx/nuta_on.png'
+
+                }
+                // console.log(stan)
+
+            })
+        </script>
+        <audio id='muzyka' loop>
+            <source src="bomberman.mp3" type='audio/mpeg'>
+        </audio>
+    </div>
+</body>
+
+</html>
